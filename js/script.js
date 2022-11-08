@@ -125,7 +125,7 @@ eleBtnUp.addEventListener('click', function () {
 });
 
 
-//Funzione autoplay
+//Bonus 1 Funzione autoplay
 const autoplay = setInterval(goAhead, 3000);
 function goAhead() {
 	listEleImg[activeIndex].classList.remove('active');
@@ -144,3 +144,34 @@ function goAhead() {
 	document.body.style.backgroundSize = 'cover';
 }
 
+//Bonus 2
+const pauseBtn = document.querySelector('#pause');
+const reverseBtn = document.querySelector('#reverse');
+
+//pulsante play e pause
+pauseBtn.addEventListener('click', function (){
+	if (pauseBtn.dataset.state == 'play') {
+		pauseBtn.dataset.state = 'stop'
+		clearInterval(autoplay);
+		pauseBtn.innerHTML = 'Play';
+	} else if (pauseBtn.dataset.state == 'stop') {
+		pauseBtn.dataset.state = 'play'
+		pauseBtn.innerHTML = 'Pause';
+		setInterval(goAhead, 3000);
+		}
+	}
+)
+
+//pulsante reverse
+/*reverseBtn.addEventListener('click', function (){
+	if (reverseBtn.dataset.state == 'forward') {
+		reverseBtn.dataset.state = 'reverse'
+		clearInterval(autoplay);
+		reverseBtn.innerHTML = 'Reverse';
+	} else if (reverseBtn.dataset.state == 'reverse') {
+		reverseBtn.dataset.state = 'forward'
+		reverseBtn.innerHTML = 'Forward';
+		goAhead();
+		}
+	}
+)*/
