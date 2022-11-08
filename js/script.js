@@ -36,7 +36,7 @@ const images = [
 for (let i = 0; i < images.length; i++) {
 	
 	const eleImg = document.createElement('img');
-	eleImg.src =`img/${images[0].image}`;
+	eleImg.src =`img/${images[i].image}`;
 	eleImg.classList.add('slider-img');
 	if (i === 0) {
 		eleImg.classList.add('active');
@@ -46,14 +46,14 @@ for (let i = 0; i < images.length; i++) {
 	//creazione Titolo
 	const eleSliderTitle = document.createElement('h3'); 
 	eleSliderTitle.classList.add('slider-h3');
-	eleSliderTitle.innerHTML = `${images[0].title}`;
+	eleSliderTitle.innerHTML = `${images[i].title}`;
 	if (i === 0) eleSliderTitle.classList.add('active');
 	eleSliderText.append(eleSliderTitle);
 
 	//Creazione Paragrafo
 	const eleSliderParagraph = document.createElement('p'); 
 	eleSliderParagraph.classList.add('slider-p');
-	eleSliderParagraph.innerHTML = `${images[0].text}`;
+	eleSliderParagraph.innerHTML = `${images[i].text}`;
 	if (i === 0) eleSliderParagraph.classList.add('active');
 	eleSliderText.append(eleSliderParagraph);
 
@@ -87,7 +87,6 @@ eleBtnDown.addEventListener('click', function () {
 	listThumbs[activeIndex].classList.remove('active');
 	listTitle[activeIndex].classList.remove('active');
 	listP[activeIndex].classList.remove('active');
-	this.src =`img/${images[activeIndex].image}`;
 	//loop infinito
 	activeIndex++;
 	if (activeIndex === listEleImg.length) {
