@@ -123,3 +123,24 @@ eleBtnUp.addEventListener('click', function () {
 	document.body.style.backgroundImage = `url('${images[activeIndex].image}')`;
 	document.body.style.backgroundSize = 'cover';
 });
+
+
+//Funzione autoplay
+const autoplay = setInterval(goAhead, 3000);
+function goAhead() {
+	listEleImg[activeIndex].classList.remove('active');
+	listThumbs[activeIndex].classList.remove('active');
+	listTitle[activeIndex].classList.remove('active');
+	listP[activeIndex].classList.remove('active');
+	activeIndex++;
+	if (activeIndex === listEleImg.length) {
+		activeIndex = 0;
+	}
+	listEleImg[activeIndex].classList.add('active');
+	listThumbs[activeIndex].classList.add('active');
+	listTitle[activeIndex].classList.add('active');
+	listP[activeIndex].classList.add('active');
+	document.body.style.backgroundImage = `url('${images[activeIndex].image}')`;
+	document.body.style.backgroundSize = 'cover';
+}
+
