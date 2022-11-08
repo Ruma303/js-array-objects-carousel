@@ -29,6 +29,16 @@ body {
 	width: 70%;
 }
 
+.slider .slider-text {
+	position: absolute;
+	z-index: 90;
+	bottom: 0;
+	right: 0;
+	padding: 2rem;
+	color: white;
+	text-align: right;
+}
+
 .slider .controls {
 	position: absolute;
 	inset: 0;
