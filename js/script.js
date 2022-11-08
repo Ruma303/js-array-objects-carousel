@@ -1,5 +1,6 @@
 const eleSliderViewer = document.querySelector('.slider-viewer');
 const eleSliderThumbs = document.querySelector('.thumbs');
+const eleSliderText = document.querySelector('.slider-text'); //contenitore dei testi
 const eleBtnUp = document.querySelector('.btn-up');
 const eleBtnDown = document.querySelector('.btn-down');
 //array delle immagini
@@ -33,7 +34,7 @@ const images = [
 
 // creare i tag immagine nell'html
 for (let i = 0; i < images.length; i++) {
-	// creare i tag immagine che va nella sezione grande .slider-viewer
+	
 	const eleImg = document.createElement('img');
 	eleImg.src =`img/${images[0].image}`;
 	eleImg.classList.add('slider-img');
@@ -41,6 +42,30 @@ for (let i = 0; i < images.length; i++) {
 		eleImg.classList.add('active');
 	}
 	eleSliderViewer.append(eleImg);
+
+	//creazione Titolo
+	const eleSliderTitle = document.createElement('h3'); 
+	eleSliderTitle.classList.add('slider-h3');
+	eleSliderTitle.innerHTML = `${images[0].title}`;
+	if (i === 0) eleSliderTitle.classList.add('active');
+	eleSliderText.append(eleSliderTitle);
+
+	//Creazione Paragrafo
+	const eleSliderParagraph = document.createElement('p'); 
+	eleSliderParagraph.classList.add('slider-p');
+	eleSliderParagraph.innerHTML = `${images[0].text}`;
+	if (i === 0) eleSliderParagraph.classList.add('active');
+	eleSliderText.append(eleSliderParagraph);
+
+	// eleSliderText.classList.add('.slider-text');
+	// const eleSliderTitle = document.createElement('h3'); //creazione titolo
+	// eleSliderText.innerHTML = `
+	// 		<h3>${images[i].title}</h3>
+	// 		<p>${images[i].text}</p>`;
+	// if (i === 0) {
+	// 	eleSliderText.classList.add('active');
+	// }
+	// eleSliderViewer.append(eleSliderText);
 
 	// creare i tag immagine che vanno nella sezione .thumbs
 	const eleThumb = document.createElement('img');
@@ -50,18 +75,19 @@ for (let i = 0; i < images.length; i++) {
 		eleThumb.classList.add('active');
 	}
 	eleSliderThumbs.append(eleThumb);
-
-	// OK FIN QUI ----------------
-	//inserire anche titoli e testi
-
 }
+
+
 
 
 const listEleImg = document.querySelectorAll('.slider-img'); 
 const listThumbs = document.querySelectorAll('.thumb-img');
+const listTitle = document.querySelectorAll('.slider-title');
+const listParagraph = document.querySelectorAll('.slider-paragraph');
+
 
 let activeIndex = 0;
-document.body.style.backgroundImage = `url('${images[activeIndex]}')`;
+document.body.style.backgroundImage = `url('${images[activeIndex].image}')`; //background url da cambiare al click
 document.body.style.backgroundSize = 'cover';
 
 // aggiungere gli event listeners ai due bottoni
@@ -69,6 +95,8 @@ eleBtnDown.addEventListener('click', function () {
 	// togliere la classe active dall'elemento attivo corrente
 	listEleImg[activeIndex].classList.remove('active');
 	listThumbs[activeIndex].classList.remove('active');
+
+
 
 	activeIndex++;
 	if (activeIndex === listEleImg.length) {
@@ -78,7 +106,8 @@ eleBtnDown.addEventListener('click', function () {
 	// aggiungere la classe active all'elemento successivo
 	listEleImg[activeIndex].classList.add('active');
 	listThumbs[activeIndex].classList.add('active');
-	document.body.style.backgroundImage = `url('${images[activeIndex]}')`;
+	
+	document.body.style.backgroundImage = `url('${images[activeIndex].image}')`;
 	document.body.style.backgroundSize = 'cover';
 });
 
@@ -86,6 +115,7 @@ eleBtnUp.addEventListener('click', function () {
 	// togliere la classe active dall'elemento attivo corrente
 	listEleImg[activeIndex].classList.remove('active');
 	listThumbs[activeIndex].classList.remove('active');
+
 
 	if (activeIndex === 0) {
 		activeIndex = listEleImg.length;
@@ -95,6 +125,7 @@ eleBtnUp.addEventListener('click', function () {
 	// aggiungere la classe active all'elemento successivo
 	listEleImg[activeIndex].classList.add('active');
 	listThumbs[activeIndex].classList.add('active');
-	document.body.style.backgroundImage = `url('${images[activeIndex]}')`;
+	
+	document.body.style.backgroundImage = `url('${images[activeIndex].image}')`;
 	document.body.style.backgroundSize = 'cover';
 });

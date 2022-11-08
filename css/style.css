@@ -39,6 +39,12 @@ body {
 	text-align: right;
 }
 
+.slider .slider-h3,
+.slider .slider-p {
+	display: none;
+}
+
+
 .slider .controls {
 	position: absolute;
 	inset: 0;
@@ -64,7 +70,7 @@ body {
 	filter: brightness(80%);
 }
 
-.btn-left:hover, .btn-right:hover {
+.btn-up:hover, .btn-down:hover {
 	background-color: lightblue;
 	cursor: pointer;
 }
@@ -83,7 +89,9 @@ body {
 	object-position: center;
 }
 
-.slider .slider-img.active {
+.slider .slider-img.active,
+.slider .slider-h3.active,
+.slider .slider-p.active{
 	display: block;
 }
 
