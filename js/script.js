@@ -157,21 +157,43 @@ pauseBtn.addEventListener('click', function (){
 	} else if (pauseBtn.dataset.state == 'stop') {
 		pauseBtn.dataset.state = 'play'
 		pauseBtn.innerHTML = 'Pause';
-		setInterval(goAhead, 3000);
+		autoplay = goAhead(); //non so che metterci
 		}
 	}
 )
 
+//Funzione andare indietro
+/*const reverse = setInterval(reverseFun, 3000);
+function reverseFun() {
+	listEleImg[activeIndex].classList.remove('active');
+	listThumbs[activeIndex].classList.remove('active');
+	listTitle[activeIndex].classList.remove('active');
+	listP[activeIndex].classList.remove('active');
+
+	//loop infinito
+	if (activeIndex === 0) {
+		activeIndex = listEleImg.length;
+	}
+	activeIndex--;
+
+	// aggiungere la classe active all'elemento successivo
+	listEleImg[activeIndex].classList.add('active');
+	listThumbs[activeIndex].classList.add('active');
+	listTitle[activeIndex].classList.add('active');
+	listP[activeIndex].classList.add('active');
+	document.body.style.backgroundImage = `url('${images[activeIndex].image}')`;
+	document.body.style.backgroundSize = 'cover';}
+
 //pulsante reverse
-/*reverseBtn.addEventListener('click', function (){
+reverseBtn.addEventListener('click', function (){
 	if (reverseBtn.dataset.state == 'forward') {
 		reverseBtn.dataset.state = 'reverse'
-		clearInterval(autoplay);
+		clearInterval(reverse);
 		reverseBtn.innerHTML = 'Reverse';
 	} else if (reverseBtn.dataset.state == 'reverse') {
 		reverseBtn.dataset.state = 'forward'
 		reverseBtn.innerHTML = 'Forward';
-		goAhead();
+		setInterval(reverse, 3000);
 		}
 	}
 )*/
