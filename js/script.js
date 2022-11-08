@@ -57,16 +57,6 @@ for (let i = 0; i < images.length; i++) {
 	if (i === 0) eleSliderParagraph.classList.add('active');
 	eleSliderText.append(eleSliderParagraph);
 
-	// eleSliderText.classList.add('.slider-text');
-	// const eleSliderTitle = document.createElement('h3'); //creazione titolo
-	// eleSliderText.innerHTML = `
-	// 		<h3>${images[i].title}</h3>
-	// 		<p>${images[i].text}</p>`;
-	// if (i === 0) {
-	// 	eleSliderText.classList.add('active');
-	// }
-	// eleSliderViewer.append(eleSliderText);
-
 	// creare i tag immagine che vanno nella sezione .thumbs
 	const eleThumb = document.createElement('img');
 	eleThumb.src = `img/${images[i].image}`;
@@ -82,8 +72,8 @@ for (let i = 0; i < images.length; i++) {
 
 const listEleImg = document.querySelectorAll('.slider-img'); 
 const listThumbs = document.querySelectorAll('.thumb-img');
-const listTitle = document.querySelectorAll('.slider-title');
-const listParagraph = document.querySelectorAll('.slider-paragraph');
+const listTitle = document.querySelectorAll('.slider-h3');
+const listP = document.querySelectorAll('.slider-p');
 
 
 let activeIndex = 0;
@@ -95,9 +85,10 @@ eleBtnDown.addEventListener('click', function () {
 	// togliere la classe active dall'elemento attivo corrente
 	listEleImg[activeIndex].classList.remove('active');
 	listThumbs[activeIndex].classList.remove('active');
-
-
-
+	listTitle[activeIndex].classList.remove('active');
+	listP[activeIndex].classList.remove('active');
+	this.src =`img/${images[activeIndex].image}`;
+	//loop infinito
 	activeIndex++;
 	if (activeIndex === listEleImg.length) {
 		activeIndex = 0;
@@ -106,7 +97,8 @@ eleBtnDown.addEventListener('click', function () {
 	// aggiungere la classe active all'elemento successivo
 	listEleImg[activeIndex].classList.add('active');
 	listThumbs[activeIndex].classList.add('active');
-	
+	listTitle[activeIndex].classList.add('active');
+	listP[activeIndex].classList.add('active');
 	document.body.style.backgroundImage = `url('${images[activeIndex].image}')`;
 	document.body.style.backgroundSize = 'cover';
 });
@@ -115,8 +107,10 @@ eleBtnUp.addEventListener('click', function () {
 	// togliere la classe active dall'elemento attivo corrente
 	listEleImg[activeIndex].classList.remove('active');
 	listThumbs[activeIndex].classList.remove('active');
+	listTitle[activeIndex].classList.remove('active');
+	listP[activeIndex].classList.remove('active');
 
-
+	//loop infinito
 	if (activeIndex === 0) {
 		activeIndex = listEleImg.length;
 	}
@@ -125,7 +119,8 @@ eleBtnUp.addEventListener('click', function () {
 	// aggiungere la classe active all'elemento successivo
 	listEleImg[activeIndex].classList.add('active');
 	listThumbs[activeIndex].classList.add('active');
-	
+	listTitle[activeIndex].classList.add('active');
+	listP[activeIndex].classList.add('active');
 	document.body.style.backgroundImage = `url('${images[activeIndex].image}')`;
 	document.body.style.backgroundSize = 'cover';
 });
